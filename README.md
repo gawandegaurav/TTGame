@@ -14,4 +14,4 @@ Display the score and the winning player.
 Sample output.
 
 
-![image](https://user-images.githubusercontent.com/20265868/149939845-43024872-0d8f-4764-9250-59e3131cb7ff.png)
+![image](https://user-images.githubusercontent.com/20265868/149997071-8b2fdd97-6c0d-4be4-be73-a0bda701188e.png)
