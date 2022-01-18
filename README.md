@@ -10,4 +10,8 @@ Assume each player winning the point randomly. If the random functions returns e
 point, if it returns odd, the second player wins the point
 Display the score and the winning player.
 
+
+Sample output.
+
+
 ![image](https://user-images.githubusercontent.com/20265868/149939845-43024872-0d8f-4764-9250-59e3131cb7ff.png)
