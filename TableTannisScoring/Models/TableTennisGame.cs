@@ -8,6 +8,8 @@ namespace TableTennis.Console.Models
         private Player Winner;
         private bool Need2PointsLead;
         private bool HasWinner;
+        private Guid LastServeWinner;
+        private bool WasTieAt15;
 
         public TableTennisGame(Player playerOne, Player playerTwo)
         {
@@ -27,16 +29,37 @@ namespace TableTennis.Console.Models
 
         public void UpdateScore(bool isPointForPlayerOne)
         {
+            Player CurrentServeWinner;
+
             if (isPointForPlayerOne)
             {
                 PlayerOne.Score++;
+                CurrentServeWinner = PlayerOne;
             }
             else
             {
                 PlayerTwo.Score++;
+                CurrentServeWinner = PlayerTwo;
+            }
+
+            if (LastServeWinner == CurrentServeWinner.Id)
+            {
+                HasWinner = true;
+                Winner = CurrentServeWinner;
+            }
+
+            if (WasTieAt15)
+            {
+                LastServeWinner = CurrentServeWinner.Id;
+            }
+
+            if (isTieAt15())
+            {
+                WasTieAt15 = true;
             }
 
             HasWinner = GameHasWinner();
+
             System.Console.WriteLine($"{PlayerOne.Name} - {PlayerOne.Score}  {PlayerTwo.Name} - {PlayerTwo.Score}");
         }
 
@@ -87,6 +110,11 @@ namespace TableTennis.Console.Models
             {
                 Need2PointsLead = false;
             }
+        }
+
+        private bool isTieAt15()
+        {
+            return PlayerOne.Score == 15 && PlayerTwo.Score == 15;
         }
     }
 }
